@@ -1,0 +1,27 @@
+import java.util.*;
+
+/**
+ * Created by chris on 4/8/2016.
+ */
+public class Bear_653A {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        TreeSet<Integer> numbers = new TreeSet<Integer>();
+        int num = reader.nextInt();
+        for(int i = 0; i < num; i++) {
+            numbers.add(reader.nextInt());
+        }
+        Iterator<Integer> iter = numbers.iterator();
+        int a, b, c;
+        for(int i = 0; i < numbers.size() - 2; i++) {
+            a = iter.next().intValue();
+            b = numbers.higher(a);
+            c = numbers.higher(b);
+            if(c - a <= 2) {
+                System.out.println("YES");
+                return;
+            }
+        }
+        System.out.println("NO");
+    }
+}
