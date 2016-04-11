@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+/**
+ * Created by chris on 4/10/2016.
+ */
+public class Chat_58A {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        String tmp = reader.nextLine().toLowerCase();
+        if(tmp.indexOf('h') >= 0) {
+            tmp = tmp.substring(tmp.indexOf('h') + 1);
+            if(tmp.indexOf('e') >= 0) {
+                tmp = tmp.substring(tmp.indexOf('e') + 1);
+                if(tmp.indexOf('l') >= 0) {
+                    tmp = tmp.substring(tmp.indexOf('l') + 1);
+                    if(tmp.indexOf('l') >= 0) {
+                        tmp = tmp.substring(tmp.indexOf('l') + 1);
+                        if(tmp.indexOf('o') >= 0) {
+                            System.out.println("YES");
+                            return;
+                        }
+                        else {
+                            System.out.println("NO");
+                            return;
+                        }
+                    }
+                    else {
+                        System.out.println("NO");
+                        return;
+                    }
+                }
+                else {
+                    System.out.println("NO");
+                    return;
+                }
+            }
+            else {
+                System.out.println("NO");
+                return;
+            }
+        }
+        else {
+            System.out.println("NO");
+            return;
+        }
+    }
+}
