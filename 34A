@@ -1,0 +1,40 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+/**
+ * Created by chris on 4/12/2016.
+ */
+public class Recon_34A {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        int num = reader.nextInt();
+        int min = Integer.MAX_VALUE;
+        int left = 0;
+        int first = reader.nextInt();
+        int prev = first;
+        int last = -1;
+        for(int i = 1; i < num; i++) {
+            last = reader.nextInt();
+            if(min > Math.abs(last - prev)) {
+                left = i;
+                min = Math.abs(last - prev);
+                //System.out.printf("set min to %d when left is %d\n", min, left);
+            }
+            prev = last;
+        }
+        boolean circle = false;
+        if(min > Math.abs(last - first)) {
+            left = num - 1;
+            min = Math.abs(last - prev);
+            //System.out.printf("set min to %d when left is %d and last is %d and first is %d\n", min, left, last, first);
+            circle = true;
+        }
+        //System.out.println(left);
+        if(circle) {
+            System.out.printf("%d %d", num, 1);
+        }
+        else {
+            System.out.printf("%d %d", left, left + 1);
+        }
+    }
+}
