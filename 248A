@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+/**
+ * Created by chris on 4/15/2016.
+ */
+public class Cupboards_248A {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        int left = 0;
+        int right = 0;
+        int tot = 0;
+        int cases = reader.nextInt();
+        for(int i = 0; i < cases; i++) {
+            left += reader.nextInt();
+            right += reader.nextInt();
+        }
+        if(left <= cases / 2) {
+            tot += left;
+        }
+        else {
+            tot += (cases - left);
+        }
+        if(right <= cases / 2) {
+            tot += right;
+        }
+        else {
+            tot += (cases - right);
+        }
+        System.out.println(tot);
+    }
+}
