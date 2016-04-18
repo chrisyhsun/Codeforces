@@ -1,0 +1,41 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Scanner;
+
+/**
+ * Created by chris on 4/18/2016.
+ */
+public class Spyke_291A {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        int n = reader.nextInt();
+        HashMap<Integer, Integer> counts = new HashMap<Integer, Integer>();
+        for(int i = 0; i < n; i++) {
+            int p = reader.nextInt();
+            if(counts.get(p) == null) {
+                counts.put(p, 1);
+            }
+            else {
+                counts.put(p, counts.get(p) + 1);
+            }
+        }
+        int pairs = 0;
+        for(Integer i : counts.keySet()) {
+            if(i == 0) {
+
+            }
+            else if(counts.get(i) == 1) {
+
+            }
+            else if(counts.get(i) == 2) {
+                pairs ++;
+            }
+            else {
+                System.out.println(-1);
+                return;
+            }
+        }
+        System.out.println(pairs);
+    }
+
+}
