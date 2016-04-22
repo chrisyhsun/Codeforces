@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+/**
+ * Created by chris on 4/10/2016.
+ */
+public class Wizards_168A {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        int a = reader.nextInt();
+        int b = reader.nextInt();
+        int c = reader.nextInt();
+        double nec = ((double) c) / 100 * ((double) a);
+        int need = (int) (Math.ceil(nec)) - b;
+        if(need < 0) {
+            System.out.println("0");
+        }
+        else {
+            System.out.println(need);
+        }
+    }
+}
