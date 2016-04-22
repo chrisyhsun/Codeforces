@@ -1,0 +1,47 @@
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+/**
+ * Created by chris on 4/15/2016.
+ */
+public class BoysGirls_253A {
+    public static void main(String[] args) throws IOException {
+        File f = new File("input.txt");
+        FileReader fr = new FileReader(f);
+        FileWriter fw = new FileWriter("output.txt");
+        int boys = Integer.parseInt("" + fr.read());
+        fr.read();
+        int girls = Integer.parseInt("" + fr.read());
+        int leftB = boys;
+        int leftG = girls;
+        //StringBuilder str = new StringBuilder("");
+        for(int i = 0; i < boys + girls; i++) {
+            if(i % 2 == 0) {
+                if(leftB != 0) {
+                    fw.write("B");
+                    leftB--;
+                }
+                else if(leftG != 0) {
+                    fw.write("G");
+                    leftG--;
+                }
+            }
+            else {
+                if(leftG != 0) {
+                    fw.write("G");
+                    leftG--;
+                }
+                else if(leftB != 0) {
+                    fw.write("B");
+                    leftB--;
+                }
+            }
+        }
+        fr.close();
+        fw.close();
+        //System.out.println(str.toString());
+    }
+}
