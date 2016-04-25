@@ -1,0 +1,96 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * Created by chris on 4/21/2016.
+ */
+public class Cheaterius_51A {
+    public static class Amulet {
+        int[][] one;
+        ArrayList<Amulet> seq;
+
+        public Amulet(String a, String b) {
+            one = new int[2][2];
+            one[0][0] = Integer.parseInt(a.substring(0, 1));
+            one[0][1] = Integer.parseInt(a.substring(1));
+            one[1][0] = Integer.parseInt(b.substring(0, 1));
+            one[1][1] = Integer.parseInt(b.substring(1));
+            seq = new ArrayList<Amulet>();
+        }
+
+        public ArrayList<Amulet> makeSeq(Amulet first) {
+            ArrayList<Amulet> ret = new ArrayList<Amulet>();
+            ret.add(first);
+            String a2 = "" + first.getTR() + "" + first.getBR();
+            String b2 = "" + first.getTL() + "" + first.getBL();
+            //System.out.println("Making: " + a2 + ", " + b2);
+            String a3 = "" + first.getBR() + "" + first.getBL();
+            String b3 = "" + first.getTR() + "" + first.getTL();
+            //System.out.println("Making: " + a3 + ", " + b3);
+            String a4 = "" + first.getBL() + "" + first.getTL();
+            String b4 = "" + first.getBR() + "" + first.getTR();
+            //System.out.println("Making: " + a4 + ", " + b4);
+            ret.add(new Amulet(a2, b2));
+            ret.add(new Amulet(a3, b3));
+            ret.add(new Amulet(a4, b4));
+            return ret;
+        }
+
+        private int getTL() {
+            return one[0][0];
+        }
+
+        private int getTR() {
+            return one[0][1];
+        }
+
+        private int getBL() {
+            return one[1][0];
+        }
+
+        private int getBR() {
+            return one[1][1];
+        }
+
+        public boolean eq(Amulet bob) {
+            int[][] a = this.one;
+            int[][] b = bob.one;
+            if(a[0][0] == b[0][0] && a[0][1] == b[0][1] && a[1][0] == b[1][0] && a[1][1] == b[1][1]) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        int cases = reader.nextInt();
+        Amulet[] tot = new Amulet[cases];
+        for(int i = 0; i < cases; i++) {
+            reader.nextLine();
+            tot[i] = new Amulet(reader.nextLine(), reader.nextLine());
+            tot[i].seq = tot[i].makeSeq(tot[i]);
+        }
+        for(int i = 1; i < tot.length; i++) {
+            for(int j = 0; j < i; j++) {
+                if(tot[j] != null) {
+                    for(int k = 0; k < 4; k++) {
+                        if(tot[j].seq.get(k).eq(tot[i])) {
+                            tot[i] = null;
+                            k = 4;
+                            j = i;
+                        }
+                    }
+                }
+            }
+        }
+        int ret = 0;
+        for(int i = 0; i < tot.length; i++) {
+            if(tot[i] != null) {
+                ret++;
+            }
+        }
+        System.out.println(ret);
+    }
+}
