@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.TreeMap;
+
+/**
+ * Created by chris on 4/26/2016.
+ */
+public class Laptops_456A {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        int num = reader.nextInt();
+        TreeMap<Integer, Integer> tot = new TreeMap<Integer, Integer>();
+        for(int i = 0; i < num; i++) {
+            tot.put(reader.nextInt(), reader.nextInt());
+        }
+        int prev = tot.firstKey().intValue();
+        for(Integer i : tot.keySet()) {
+            if(i > prev) {
+                if(tot.get(i) < tot.get(prev)) {
+                    System.out.println("Happy Alex");
+                    return;
+                }
+            }
+            prev = i;
+        }
+        System.out.println("Poor Alex");
+        return;
+    }
+}
