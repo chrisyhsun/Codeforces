@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+/**
+ * Created by chris on 5/2/2016.
+ */
+public class Ball_46A {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        int cases = reader.nextInt();
+        int k = 1;
+        for(int i = 1; i < cases; i++) {
+            k += i;
+            if(k % cases == 0) {
+                System.out.print(cases);
+            }
+            else {
+                System.out.print(k % cases);
+            }
+            System.out.print(" ");
+        }
+    }
+}
