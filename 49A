@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+/**
+ * Created by chris on 5/3/2016.
+ */
+public class Sleuth_49A {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        String tmp = reader.nextLine();
+        tmp = tmp.substring(0, tmp.indexOf('?'));
+        tmp = tmp.trim();
+        if("aeiouyAEIOUY".contains("" + tmp.charAt(tmp.length() - 1))) {
+            System.out.println("YES");
+        }
+        else {
+            System.out.println("NO");
+        }
+    }
+}
