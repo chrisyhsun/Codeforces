@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+/**
+ * Created by chris on 5/2/2016.
+ */
+public class Chat_5A {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        int ppl = 0;
+        int sent = 0;
+        while(reader.hasNextLine()) {
+            String tmp = reader.nextLine();
+            if(tmp.charAt(0) == '+') {
+                ppl++;
+            }
+            else if(tmp.charAt(0) == '-') {
+                ppl--;
+            }
+            else {
+                sent += ppl * tmp.substring(tmp.indexOf(':') + 1).length();
+            }
+        }
+        System.out.println(sent);
+    }
+}
